@@ -69,6 +69,9 @@ bool MoveitPlugin::srvPublishMoveitScene(std_srvs::Trigger::Request& req, std_sr
             if (!e->has_pose() || !e->shape() || e->existenceProbability() < 0.95 || e->hasFlag("self") || e->id() == "floor")
                 continue;
 
+ 	    if (e->id() != "dinner_table")
+		continue;
+
             const geo::Mesh mesh = e->shape()->getMesh();
 
             shape_msgs::Mesh mesh_msg;
